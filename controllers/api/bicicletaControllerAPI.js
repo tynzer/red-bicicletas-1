@@ -8,7 +8,7 @@ exports.bicicleta_list = function(req,res){
 
 exports.bicicleta_create = function(req,res){
     var bici =new Bicicleta(req.body.id,req.body.color,req.body.modelo);
-    bici.ubicacion=[req.body.ltd,req.body.lng]
+    bici.ubicacion=[req.body.lat,req.body.lng]
 
     Bicicleta.add(bici);
 
@@ -26,7 +26,7 @@ exports.bicicleta_update = function (req, res) {
     Bicicleta.findById(req.body.code, (err, targetBici) => {
         if (err) console.log(err);
 
-        targetBici.code = req.body.code
+        targetBici.code = req.body.code;
         targetBici.color = req.body.color;
         targetBici.modelo = req.body.modelo;
         targetBici.ubicacion = [req.body.lat, req.body.lng];
