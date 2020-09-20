@@ -1,0 +1,24 @@
+extends ../layout
+
+block content
+    a(href='/bicicletas') Volver
+
+    br
+    br
+    br
+
+    h1 Información de Bicicleta
+
+    br
+    br
+
+    form(action=`/bicicletas/${bici.id}/show` method='get')
+        label()='Code: ' + bici.id
+        br
+        label()='Color: ' + bici.color
+        br
+        label()='Modelo: ' + bici.modelo
+        br
+        label()='Latitud: ' + bici.ubicacion[0]
+        br
+        label()='Longitud: ' + bici.ubicacion[1]
