@@ -23,20 +23,16 @@ exports.bicicleta_delete=function(req,res){
 
 
 exports.bicicleta_update = function (req, res) {
-
-                 
-                let bici = await Bicicleta.findById(req.body.id);
-                bici.code = req.body.code;
-                bici.color = req.body.color;
-                bici.modelo = req.body.modelo;
-                bici.ubicacion = [req.body.lat, req.body.lng];
-            
-                await bici.save();
-
-        
+    Bicicleta.findById(req.body.id, function (err, targetBici) {
+        targetBici.color = req.body.color;
+        targetBici.modelo = req.body.modelo;
+        targetBici.ubicacion = [req.body.lat, req.body.lng];
+        targetBici.save();
     
-    res.status(200).json({
-        bicicleta: bici,
+        res.status(200).json({
+            bicicleta: targetBici
+        });
     });
+    
 };
 
